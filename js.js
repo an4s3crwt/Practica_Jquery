@@ -100,8 +100,17 @@ $(document).ready(() => { //ejcuta el código una vez cargado todo el dom
    })
 
 
+});
+
+
+/*
+* FUNCIÓN PARA RESALTAR TAREAS AL PASAR EL RATÓN
+*/
+$('#lista').on('mouseenter', '.tarea', function(){
+    $(this).addClass('hovered'); //cuando el ratón se pasa sobre una tarea, se agregar la clase hovered a esa tarea , en el css le aplica un color
+});
+
+$('#lista').on('mouseleave', '.tarea', function(){
+    $(this).removeClass('hovered');//cuando el ratón sale de la tarea, se elimina la clase que se le ha aplicado antes a esa tarea especifica
 })
-
-
-//FUNCIONES
 
