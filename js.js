@@ -60,8 +60,44 @@ $(document).ready(() => { //ejcuta el código una vez cargado todo el dom
    });
 
    /*
-   *
+   *FUNCIÓN PARA AGREGAR TAREAS DENTRO DE UN PROYECTO
    */
+   $('#lista').on('click', '.agregar', function(){//se ejcuta cuanddo se hace click a el botón con la clase de .agregar
+    //Obtiene el elemento input para la nueva tarea
+    //$(this) hace ref al botón que fue clickado para identificarlo
+    //sibilings() selecciona el input que es hermano de ese boton agregar tarea
+    //basandose en su clase(inputTarea), que está en el mismo bloque <li>
+    let tareaInput = $(this).siblings('.inputTarea');
+
+    //obtiene el valor , el texto que se ha escrito en el input mediante val()
+    let nombreTarea = tareaInput.val();
+
+    if(nombreTarea){//si es true, es decir, no está vacío
+
+        //crear el elemento <li> por cada tarea que se crea dentro de un proyecto
+        //el bloqyue de código crea un elemento de lista <li> que incluye,:
+        //--  título para mostrar el nombre de la tarea
+        //-- botón para marcar la tarea como importante
+        //-- botón para marcar la tarea como completada 
+        let tarea = $(`
+            <li class="tarea">
+                <h3 class="nombreTarea">${nombreTarea}</h3>
+                <button class="eliminarTarea">Eliminar Tarea</button>
+                <button class="marcarImp">Importante</button>
+                <button class="marcarCom">Completada</button>
+            </li>    
+        `);
+
+        //agrega la tarea al elemento <ul> que se creó para cada proyecto
+        //al utilizar $(this) se sigue haciendo ref al botón en el que se ha hecho click , que es el de agregar tarea
+        //siblings(listaTareas) selecciona la lista <ul> con esa clase asociasda al proyecto en el que se acciona el botón de agregar tarea
+        //siblings lo que hace es buscar el elemento <ul class="listaTareas"> que es hermano del botón agregarTareas
+        //append() agregar la tarea que se ha creado (todo el bloque de código <li> anterior) a esta lista del proyecto
+        $(this).siblings('.listaTareas').append(tarea);
+        tareaInput.val(''); //limpiar el input de tarea
+
+    }
+   })
 
 
 })
