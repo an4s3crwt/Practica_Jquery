@@ -114,3 +114,30 @@ $('#lista').on('mouseleave', '.tarea', function(){
     $(this).removeClass('hovered');//cuando el ratón sale de la tarea, se elimina la clase que se le ha aplicado antes a esa tarea especifica
 })
 
+/*
+* FUNCIÓN PARA RMARCAR LAS TAREAS COMO IMPORTANTES
+*/
+
+
+    /*
+    * FUNCIÓN PARA MARCAR LAS TAREAS COMO IMPORTANTES
+    */
+    $('#lista').on('click', '.marcarImp', function() {
+        // $(this) hace referencia al botón en el que se hizo click
+        // parent('.tarea') busca el elementopadre con la clase 'tarea' <li> ,del botón en el que se hizo click
+        // toggleClass('importante') agrega o quita la clase 'importante' a la tarea
+        // Esto cambia el estilo de la tarea, aplicando el estilo del CSS para '.importante'
+        $(this).parent('.tarea').toggleClass('importante');
+    });
+
+    /*
+    * FUNCIÓN PARA MARCAR LAS TAREAS COMO COMPLETADAS
+    */
+    $('#lista').on('click', '.marcarCom', function() {
+        // $(this) hace referencia al botón en el que se hizo click
+        // parent('.tarea') busca el elementopadre con la clase 'tarea' <li> ,del botón en el que se hizo click
+        // toggleClass('completada') agrega o quita la clase 'completada' a la tarea
+        // Esto cambia el estilo de la tarea, aplicando el estilo del CSS para '.completada'
+        $(this).parent('.tarea').toggleClass('completada');
+    });
+
